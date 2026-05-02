@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- верх часть-->
+      <div class="upper">
+        <div class="logo">
+            <div class="logo_picture">🗺</div>
+            CitiQuest
+        </div>
+        <div class="xp_block">
+            <div class="xp_picture">🧭</div>
+            <div class="xp_info">
+                <div class="xp_lvl">LvL 7</div>
+                <div class="xp_pts">1 200 XP</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- уведомление -->
+<div class="notice"> ✨ Новый квест уже рядом стобой!</div>
+
+
+<div class="map_block">
+  <div class="map-bg" id="map">
+
+    <!-- ТЫ -->
+    <div class="player-range"></div>
+    <div class="player-dot"></div>
+
+
+    <div class="quest-pin pin-blue" style="left:25%;top:30%" onclick="openModal('История Арбата','Исторический','🏛','Пройди по легендарным местам Арбата и узнай тайны города прошлого. Найди 5 исторических табличек и сфотографируй их.','250','+2','3/5 мест')">
+      <div class="pin-body">🏛</div>
+      <div class="pin-label">История</div>
+      <div class="pin-dist">~120м</div>
+    </div>
+
+    <div class="quest-pin pin-green" style="left:62%;top:28%" onclick="openModal('Гастро-тур','Еда','🍜','Открой для себя лучшие скрытые кафе района. Попробуй блюда в 3 заведениях и поставь оценки.','180','+1','0/3 кафе')">
+      <div class="pin-body">🍜</div>
+      <div class="pin-label">Гастро</div>
+      <div class="pin-dist">~340м</div>
+    </div>
+
+    <div class="quest-pin pin-yellow" style="left:45%;top:44%" onclick="openModal('Уличное искусство','Арт','🎨','Найди граффити и муралы района. Задокументируй городское искусство и добавь в общую карту.','320','+3','1/6 объектов')">
+      <div class="pin-body">🎨</div>
+      <div class="pin-label">Арт</div>
+      <div class="pin-dist">~80м</div>
+    </div>
+
+    <div class="quest-pin pin-red" style="left:72%;top:58%" onclick="openModal('Детектив','Мистика','🔍','Реши городскую загадку! Следуй подсказкам, разбросанным по улицам, чтобы найти спрятанный клад.','500','+4','0/7 улик')">
+      <div class="pin-body">🔍</div>
+      <div class="pin-label">Детектив</div>
+      <div class="pin-dist">~610м</div>
+    </div>
+
+    <div class="quest-pin pin-blue" style="left:22%;top:62%" onclick="openModal('Природный маршрут','Природа','🌿','Найди все зелёные оазисы в каменных джунглях города. Парки, скверы и тайные дворики.','200','+2','2/4 места')">
+      <div class="pin-body">🌿</div>
+      <div class="pin-label">Природа</div>
+      <div class="pin-dist">~230м</div>
+    </div>
+
+<!-- кол. квестов -->
+    <div class="quest-counter">
+    <div class="qc-num">5</div>
+    <div class="qc-label">квестов</div>
+    <div class="qc-dots">
+      <div class="qc-dot" style="background:var(--accent)"></div>
+      <div class="qc-dot" style="background:var(--accent2)"></div>
+      <div class="qc-dot" style="background:var(--accent3)"></div>
+      <div class="qc-dot" style="background:var(--danger)"></div>
+      <div class="qc-dot" style="background:var(--accent)"></div>
+    </div>
+  </div>
+
+ 
+  </div>
+</div>
+ <div class="bottom-sheet">
+  <div class="active-quest" onclick="openModal('Уличное искусство','Арт','🎨','Найди граффити и муралы района. Задокументируй городское искусство и добавь вобщую карту.','320','+3','1/6 объектов')">
+    <div class="aq-icon">🎨</div>
+    <div class="aq-info">
+      <div class="aq-tag">● Активный квест</div>
+      <div class="aq-title">Уличное искусство района</div>
+      <div class="aq-progress-wrap">
+        <div class="aq-progress-bar"><div class="aq-progress-fill"></div></div>
+        <div class="aq-steps">1/6</div>
+      </div>
+    </div>
+    <div class="aq-arrow">›</div>
+  </div>
+
+  <div class="navbar" >
+    <div class="nav-item active">
+      <div class="nav-icon">🗺</div>
+      <div class="nav-label">Карта</div>
+    </div>
+    <div class="nav-item" onclick="switchTab(this)">
+      <div class="nav-icon">⚔️</div>
+      <div class="nav-label">Квесты</div>
+      <div class="nav-badge">3</div>
+    </div>
+    <div class="nav-item" onclick="switchTab(this)">
+      <div class="nav-icon">🏆</div>
+      <div class="nav-label">Рейтинг</div>
+    </div>
+    <div class="nav-item" onclick="switchTab(this)">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Профиль</div>
+    </div>
+  </div>
+</div>
+
+<!-- ячейк.зд-->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-header">
+      <div class="modal-icon" id="m-icon">🎨</div>
+      <div class="modal-meta">
+        <div class="modal-category" id="m-cat">Арт</div>
+        <div class="modal-title" id="m-title">Уличное искусство</div>
+        <div class="modal-tags">
+          <span class="tag" id="m-steps">1/6 объектов</span>
+          <span class="tag">~80м</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-desc" id="m-desc">Найди граффити и муралы района.</div>
+    <div class="modal-rewards">
+      <div class="reward-card">
+        <div class="reward-icon">⚡</div>
+        <div class="reward-val" id="m-xp">320</div>
+        <div class="reward-label">XP</div>
+      </div>
+      <div class="reward-card">
+        <div class="reward-icon">⭐</div>
+        <div class="reward-val" id="m-lvl">+3</div>
+        <div class="reward-label">Уровень</div>
+      </div>
+      <div class="reward-card">
+        <div class="reward-icon">🏅</div>
+        <div class="reward-val">1</div>
+        <div class="reward-label">Значок</div>
+      </div>
+    </div>
+    <button class="btn-start" onclick="startQuest()">Начать квест →</button>
+    </div>
+</div>
+<script>
+  function openModal(title, cat, icon, desc, xp, lvl, steps) {
+    document.getElementById('m-title').textContent = title;
+    document.getElementById('m-cat').textContent = cat;
+    document.getElementById('m-icon').textContent = icon;
+    document.getElementById('m-desc').textContent = desc;
+    document.getElementById('m-xp').textContent = xp;
+    document.getElementById('m-lvl').textContent = lvl;
+    document.getElementById('m-steps').textContent = steps;
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal')) {
+      document.getElementById('modal').classList.remove('open');
+    }
+  }
+
+  function startQuest() {
+    document.getElementById('modal').classList.remove('open');
+    const toast = document.querySelector('.toast');
+    toast.style.animation = 'none';
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    toast.textContent = '🎯 Квест начат! Удачи!';
+    toast.style.background = 'rgba(59,130,246,0.15)';
+    toast.style.borderColor = 'rgba(59,130,246,0.4)';
+    toast.style.color = 'var(--accent)';
+    setTimeout(() => {
+      toast.style.transition = 'opacity 0.5s';
+      toast.style.opacity = '0';
+    }, 2500);
+  }
+
+  function switchTab(el) {
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+  }
+</script>
+
+
+
+</body>
+</html>
